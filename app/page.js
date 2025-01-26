@@ -1,101 +1,144 @@
-import Image from "next/image";
+"use client";
+import Lenis from "@studio-freight/lenis";
+import { Hind_Siliguri } from "next/font/google";
 
-export default function Home() {
+const hindSiliguri = Hind_Siliguri({
+  variable: "--font-hind",
+  subsets: ["bengali"],
+  weight: ["400"],
+});
+export default function Page() {
+  const lenis = new Lenis({ duration:3});
+  function raf(time) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+  }
+  requestAnimationFrame(raf);
+
+  const words = [
+    { word: "Shriek", meaning: "চিৎকার করা", pronunciation: "শ্রিক" },
+    { word: "Quack", meaning: "হাঁসের ডাক", pronunciation: "কোয়াক" },
+    { word: "Sheaf", meaning: "আঁটি বা গুচ্ছ", pronunciation: "শিফ" },
+    {
+      word: "Gourd",
+      meaning: "লাউ বা কুমড়ো জাতীয় সবজি",
+      pronunciation: "গোর্ড",
+    },
+    { word: "Puffy", meaning: "ফুলে ওঠা বা ফোলা", pronunciation: "পাফি" },
+    {
+      word: "Stubbornness",
+      meaning: "একগুঁয়ে স্বভাব",
+      pronunciation: "স্টাবর্ননেস",
+    },
+    { word: "Ruffled", meaning: "অশান্ত বা উসকানো", pronunciation: "রাফল্ড" },
+    {
+      word: "Outraged",
+      meaning: "ক্ষুব্ধ বা ক্ষিপ্ত",
+      pronunciation: "আউট্রেইজড",
+    },
+    { word: "Gobble", meaning: "গোগ্রাসে খাওয়া", pronunciation: "গব্ল" },
+    { word: "Flickering", meaning: "ঝিলমিল করা", pronunciation: "ফ্লিকারিং" },
+    { word: "Tumescent", meaning: "ফুলে ওঠা", pronunciation: "টিউমেসেন্ট" },
+    { word: "Hackles", meaning: "পশুর ঘাড়ের লোম", pronunciation: "হ্যাকলস" },
+    {
+      word: "Wattles",
+      meaning: "মোরগের গলার লাল চামড়া",
+      pronunciation: "ওয়াটলস",
+    },
+    { word: "Scurrying", meaning: "দ্রুত দৌড়ানো", pronunciation: "স্কারিং" },
+    { word: "Nonplussed", meaning: "হতবুদ্ধি", pronunciation: "ননপ্লাস্ট" },
+    {
+      word: "Surrender",
+      meaning: "আত্মসমর্পণ করা",
+      pronunciation: "সারেন্ডার",
+    },
+    { word: "Deterring", meaning: "বাধা দেওয়া", pronunciation: "ডিটারিং" },
+    { word: "Kerosene", meaning: "কেরোসিন তেল", pronunciation: "কেরোসিন" },
+    {
+      word: "Piercing",
+      meaning: "তীক্ষ্ণ বা ধারালো",
+      pronunciation: "পিয়ার্সিং",
+    },
+    { word: "Provisions", meaning: "সরবরাহ", pronunciation: "প্রোভিশনস" },
+    { word: "Fracture", meaning: "ভাঙন বা ফাটল", pronunciation: "ফ্র্যাকচার" },
+    {
+      word: "Crucifies",
+      meaning: "মানসিক বা শারীরিক কষ্ট দেওয়া",
+      pronunciation: "ক্রুসিফাইজ",
+    },
+    {
+      word: "Contorted",
+      meaning: "বিকৃত বা মুচড়ানো",
+      pronunciation: "কন্টোর্টেড",
+    },
+    { word: "Swollen", meaning: "ফুলে যাওয়া", pronunciation: "স্বোলেন" },
+    {
+      word: "Snarling",
+      meaning: "গর্জন করা বা দাঁত খিঁচানো",
+      pronunciation: "স্নার্লিং",
+    },
+    { word: "Placid", meaning: "শান্ত বা স্থির", pronunciation: "প্ল্যাসিড" },
+    { word: "Harsh", meaning: "কঠোর বা রুক্ষ", pronunciation: "হার্শ" },
+    { word: "Immobile", meaning: "স্থির বা অনড়", pronunciation: "ইমোবাইল" },
+    { word: "Surveillance", meaning: "নজরদারি", pronunciation: "সার্ভেইলেন্স" },
+    { word: "Clenched", meaning: "দৃঢ়ভাবে চেপে ধরা", pronunciation: "ক্লেনচড" },
+    { word: "Criminal", meaning: "অপরাধী", pronunciation: "ক্রিমিনাল" },
+    { word: "Journey", meaning: "যাত্রা", pronunciation: "জার্নি" },
+    { word: "Diligent", meaning: "পরিশ্রমী", pronunciation: "ডিলিজেন্ট" },
+    { word: "Conscious", meaning: "সচেতন", pronunciation: "কনশাস" },
+    { word: "Appeal", meaning: "আবেদন", pronunciation: "অ্যাপিল" },
+    { word: "Spectacle", meaning: "দর্শনীয় দৃশ্য", pronunciation: "স্পেকটেকল" },
+    { word: "Manifest", meaning: "প্রকাশ করা", pronunciation: "ম্যানিফেস্ট" },
+    { word: "Tension", meaning: "চাপ বা চাপা অবস্থা", pronunciation: "টেনশন" },
+    { word: "Innocent", meaning: "নির্দোষ", pronunciation: "ইনোসেন্ট" },
+    { word: "Vivid", meaning: "উজ্জ্বল বা পরিষ্কার", pronunciation: "ভিভিড" },
+    { word: "Reluctant", meaning: "অস্বস্তিকর", pronunciation: "রিলাকট্যান্ট" },
+    {
+      word: "Primitive",
+      meaning: "প্রাথমিক বা প্রাচীন",
+      pronunciation: "প্রিমিটিভ",
+    },
+    { word: "Virtuous", meaning: "সৎ বা নৈতিক", pronunciation: "ভার্চুয়াস" },
+    {
+      word: "Bewildered",
+      meaning: "ভ্রান্ত বা বিভ্রান্ত",
+      pronunciation: "বিওইল্ডারড",
+    },
+    { word: "Authentic", meaning: "প্রামাণিক", pronunciation: "অথেন্টিক" },
+    { word: "Eager", meaning: "আগ্রহী", pronunciation: "ইগার" },
+    { word: "Sympathy", meaning: "সহানুভূতি", pronunciation: "সিমপ্যাথি" },
+    {
+      word: "Resilience",
+      meaning: "স্থিরতা বা স্থিতিস্থাপকতা",
+      pronunciation: "রেজিলিয়েন্স",
+    },
+  ];
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.js
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 to-black p-6">
+      <div className="text-white md:max-w-xl max-w-sm mx-auto backdrop-blur-sm bg-white/5 rounded-xl md:p-8 p-5">
+        <div>
+          <h1 className="md:text-4xl text-3xl font-bold bg-gradient-to-r from-white/80 to-white/60 bg-clip-text text-transparent">
+            LESSON 1
+          </h1>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+        <div className="border-t border-white/10 my-6"></div>
+        {words.map((word) => (
+          <div key={word?.word}>
+            <h1 className="text-white/90 flex md:gap-4 gap-2 items-center p-4 rounded-lg">
+              <span className="md:text-2xl text-xl font-semibold">{word?.word}</span>
+              <div className="border h-8 border-white/50"></div>
+              <span className="text-purple-400"></span>
+              <span className={`${hindSiliguri.className} text-white/80 md:text-xl`}>
+                {word?.meaning}
+                <span className="text-sm text-gray-400 ml-1">
+                  ({word?.pronunciation})
+                </span>
+              </span>
+            </h1>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
