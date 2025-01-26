@@ -124,7 +124,7 @@ export default function Page() {
         </div>
         <div className="border-t border-white/10 my-6"></div>
         {words.map((word) => (
-          <div key={word?.word}>
+          <div key={word?.word}> 
             <h1 className="text-white/90 flex md:gap-4 gap-2 items-center p-4 rounded-lg">
               <span className="md:text-2xl text-xl font-semibold">{word?.word}</span>
               <div className="border h-8 border-white/50"></div>
