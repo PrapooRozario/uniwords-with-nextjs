@@ -1,5 +1,3 @@
-"use client";
-import Lenis from "@studio-freight/lenis";
 import { Hind_Siliguri } from "next/font/google";
 
 const hindSiliguri = Hind_Siliguri({
@@ -8,12 +6,6 @@ const hindSiliguri = Hind_Siliguri({
   weight: ["400"],
 });
 export default function Page() {
-  const lenis = new Lenis({ duration:3});
-  function raf(time) {
-    lenis.raf(time);
-    requestAnimationFrame(raf);
-  }
-  requestAnimationFrame(raf);
 
   const words = [
     { word: "Shriek", meaning: "চিৎকার করা", pronunciation: "শ্রিক" },
@@ -123,8 +115,8 @@ export default function Page() {
           </h1>
         </div>
         <div className="border-t border-white/10 my-6"></div>
-        {words.map((word) => (
-          <div key={word?.word}> 
+        {words.map((word, idx) => (
+          <div key={idx}> 
             <h1 className="text-white/90 flex md:gap-4 gap-2 items-center p-4 rounded-lg">
               <span className="md:text-2xl text-xl font-semibold">{word?.word}</span>
               <div className="border h-8 border-white/50"></div>
